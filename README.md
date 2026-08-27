@@ -1,0 +1,1 @@
+An accessibility-focused weather and activity helper for individuals with intellectual disabilities.

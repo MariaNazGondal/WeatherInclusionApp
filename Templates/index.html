@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy Weather Helper</title>
+  <style>
+    :root {
+      --bg-color: #f0f7ff;
+      --card-bg: #ffffff;
+      --text-main: #1f2937;
+      --accent-blue: #2563eb;
+      --accent-green: #16a34a;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .app-container {
+      max-width: 700px;
+      width: 100%;
+    }
+    .search-box {
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .search-input {
+      flex: 1;
+      font-size: 1.2rem;
+      padding: 10px 16px;
+      border: 2px solid #cbd5e1;
+      border-radius: 10px;
+      outline: none;
+    }
+    .search-btn {
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: var(--accent-blue);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .main-weather-card {
+      background: #ffffff;
+      border: 3px solid #dbeafe;
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .hero-icon {
+      font-size: 5rem;
+      margin: 10px 0;
+    }
+    .temp-display {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+    .status-text {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #4b5563;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 20px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .action-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      border: 2px solid #e2e8f0;
+    }
+    .card-icon {
+      font-size: 3.5rem;
+      margin-bottom: 8px;
+    }
+    .card-label {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .card-subtext {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <form class="search-box" method="POST">
+      <input type="text" name="city" class="search-input" placeholder="Type city (e.g. Copenhagen)..." value="{{ city }}" aria-label="City name" />
+      <button type="submit" class="search-btn">Look Up 🔍</button>
+    </form>
+
+    {% if error %}
+      <div class="main-weather-card" style="border-color: #fca5a5;">
+        <h2>⚠️ {{ error }}</h2>
+      </div>
+    {% endif %}
+
+    {% if weather %}
+      <div class="main-weather-card">
+        <h1 style="margin: 0; font-size: 1.8rem;">📍 {{ weather.city }}</h1>
+        <div class="hero-icon">{{ weather.weather_icon }}</div>
+        <div class="temp-display">{{ weather.temp }}°C</div>
+        <div class="status-text">{{ weather.status_text }}</div>
+      </div>
+
+      <div class="section-title">👕 What to Wear Today</div>
+      <div class="grid-container">
+        {% for item in weather.clothes %}
+          <div class="action-card">
+            <div class="card-icon">{{ item.icon }}</div>
+            <div class="card-label">{{ item.item }}</div>
+            <div class="card-subtext">{{ item.desc }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="section-title">🌟 Fun Things to Do</div>
+      <div class="grid-container">
+        {% for act in weather.activities %}
+          <div class="action-card">
+            <div class="card-icon">{{ act.icon }}</div>
+            <div class="card-label">{{ act.name }}</div>
+            <div class="card-subtext">Best {{ act.where }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
