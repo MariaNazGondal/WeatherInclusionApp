@@ -2,7 +2,7 @@
 
 An accessibility-focused web application engineered to support individuals with intellectual disabilities and special needs in planning daily routines independently[cite: 1, 2]. By translating real-time meteorological data into visual cue cards and plain language, the app provides immediate clarity on weather conditions, dress codes, and indoor/outdoor activities.
 
-🔗 **Live Demo:** [Open the Live Web App](https://inclusion-weather-app.onrender.com)
+🔗 **Live Demo:** [Open the Live Web App][(https://weatherinclusionapp.onrender.com)]
 
 ---
 
