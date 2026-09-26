@@ -1,10 +1,12 @@
+
+
 # ☀️ Inclusive Weather & Daily Activity Assistant
 
 An accessibility-focused web application engineered to support individuals with intellectual disabilities and special needs in planning daily routines independently[cite: 1, 2]. By translating real-time meteorological data into visual cue cards and plain language, the app provides immediate clarity on weather conditions, dress codes, and indoor/outdoor activities.
 
 🔗 **Live Demo:** [Open the Live Web App](https://weatherinclusionapp.onrender.com)
 
-
+<img width="2227" height="1339" alt="Screendisplay" src="https://github.com/user-attachments/assets/32e1ece9-8df8-4d99-bc38-dd6bd69078e0" />
 ---
 
 ## 🌟 Key Features
